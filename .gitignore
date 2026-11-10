@@ -1,0 +1,11 @@
+data/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+*.npz
+*.zip
+*.h5
+report/*.aux
+report/*.log
+report/*.out
+report/*.synctex.gz
