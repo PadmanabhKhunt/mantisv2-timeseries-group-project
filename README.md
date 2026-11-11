@@ -72,8 +72,9 @@ Key findings:
 - **The mixer gate shows how much the model uses channel mixing**: |gate| about 0.05–0.3 on multi-channel data
   (largest on HHAR, MP8, CAP, SEDFx), and close to 0 on the single-channel Epilepsy-EEG and on the small EEG sets
   FingerMovements and SelfRegulationSCP1/2.
-- **Learned layer weights stay close to uniform** (0.14–0.22 per layer; a slight preference for the last two layers
-  on EMOPain and MP8), so no single layer dominates; this questions the paper's fixed choice of layer 2.
+- **Learned layer weights depend on the dataset**: on most datasets they stay close to uniform (about 1/6 per layer),
+  but on Sleep-EDFx and PCL-OOD layers 0–2 get about two-thirds of the weight, and MP8 and EMOPain prefer the last two
+  layers. One fixed layer (the paper uses layer 2) cannot suit every domain.
 - **Small EEG datasets (FingerMovements, SCP1) are best with plain logistic regression**: with a few hundred training
   samples a trained head overfits.
 

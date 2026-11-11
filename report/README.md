@@ -1,11 +1,10 @@
-# Report (draft)
+# Report
 
 IEEE double-column conference format, as required by the project specification:
 6 pages of content + 1 page work plan + references.
 
-- `main.tex`: the report source. Lines marked `TODO (group)` must be filled in before submission
-  (surnames, student numbers, each member's final contribution, and an AI-use statement if the module requires one).
-- `main.pdf`: the compiled draft.
+- `main.tex`: the report source.
+- `main.pdf`: the compiled report (the version submitted on Brightspace).
 - `figures/`: the two figures, built from `results/all_results.csv` by `python src/tables/make_figures.py`.
 - `sessions_table.tex`, `timing_table.tex`: the two timing tables (`\input` by `main.tex`), built by
   `python src/tables/make_timing_table.py`.
