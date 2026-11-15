@@ -7,32 +7,33 @@
 
 The 18 datasets are the rows of the MantisV2 paper's Table 2 (HAR) and Table 3 (EEG), in order. Shapes come from
 Tables 5 and 6 (Appendix A.1). `paper` is the MantisV2 column of Tables 2 and 3: put it in the notebook so it shows next
-to our numbers.
+to our numbers. The reproduction column gives test accuracy as mean ± standard deviation over three Random Forest seeds.
+Each value links to the saved CSV for that dataset.
 
-| # | Dataset | Results from `kaggle_runs/` | Channels × length | Train / test | Classes | Paper (MantisV2) | Kit `source` |
-|---|---|---|---|---|---|---|---|
-| 1 | Ego4D | not run (licence) | 6 × 1000 | 247,095 / 66,994 | 31 | 0.5258 | `numpy` |
-| 2 | EMOPain | 05, 09 | 30 × 200 | 968 / 355 | 3 | 0.8798 | `uea` (on timeseriesclassification.com) |
-| 3 | HHAR-ID | 05 | 6 × 500 | 8,716 / 3,419 | 6 | 0.9845 | `woods`, `split='ID'` |
-| 4 | HHAR-OOD | 05 | 6 × 500 | 11,150 / 2,154 | 6 | 0.5822 | `woods`, `split='OOD'` |
-| 5 | MP8 | 05 | 8 × 161 | 1,426 / 595 | 4 | 0.6857 | `numpy` (from FM4MTSC, see below) |
-| 6 | MP50 | 05, 09 | 50 × 161 | 1,426 / 595 | 4 | 0.7345 | `numpy` (from FM4MTSC, see below) |
-| 7 | UCI-HAR | 01, 02, 03, 04, 10 | 3 × 206 | 5,881 / 2,947 | 6 | 0.9013 | `tfc` (`'HAR'`) |
-| 8 | Blink | 01, 02, 03, 04, 09 | 4 × 510 | 500 / 450 | 2 | 0.9956 | `uea` |
-| 9 | CAP-ID | 01, 03, 04 | 19 × 3000 | 25,748 / 10,098 | 6 | 0.8152 | `woods`, `split='ID'` |
-| 10 | CAP-OOD | 01, 03, 04 | 19 × 3000 | 27,393 / 8,265 | 6 | 0.7859 | `woods`, `split='OOD'` |
-| 11 | Epilepsy-EEG | 01, 02, 03, 04, 10 | 1 × 178 | 60 / 11,420 | 2 | 0.9558 | `tfc` (`'Epilepsy'`) |
-| 12 | FingerMovements | 01, 02, 03, 04, 09 | 28 × 50 | 316 / 100 | 2 | 0.5500 | `uea` |
-| 13 | PCL-ID | 06, 09 | 48 × 750 | 14,405 / 5,650 | 2 | 0.5716 | `woods`, `split='ID'` |
-| 14 | PCL-OOD | 09 | 48 × 750 | 9,880 / 7,800 | 2 | 0.5311 | `woods`, `split='OOD'` |
-| 15 | SEDFx-ID | 07 | 4 × 3000 | 152,178 / 59,678 | 6 | 0.8000 | `woods`, `split='ID'` |
-| 16 | SEDFx-OOD | 08 | 4 × 3000 | 133,746 / 52,838 | 6 | 0.7636 | `woods`, `split='OOD'` |
-| 17 | SelfRegulationSCP1 | 05 | 6 × 896 | 268 / 293 | 2 | 0.8134 | `uea` |
-| 18 | SelfRegulationSCP2 | 05 | 7 × 1152 | 200 / 180 | 2 | 0.5167 | `uea` |
+| # | Dataset | Results from `kaggle_runs/` | Channels × length | Paper train / test | Classes | Paper (MantisV2) | Kit `source` | Reproduced RF accuracy |
+|---|---|---|---|---|---|---|---|---|
+| 1 | Ego4D | not run (licence) | 6 × 1000 | 247,095 / 66,994 | 31 | 0.5258 | `numpy` | Not run (licence) |
+| 2 | EMOPain | 05, 09 | 30 × 200 | 968 / 355 | 3 | 0.8798 | `uea` (on timeseriesclassification.com) | [0.8826 ± 0.0058](../results/by_dataset/02_EMOPain.csv) |
+| 3 | HHAR-ID | 05 | 6 × 500 | 8,716 / 3,419 | 6 | 0.9845 | `woods`, `split='ID'` | [0.9834 ± 0.0005](../results/by_dataset/03_HHAR-ID.csv) |
+| 4 | HHAR-OOD | 05 | 6 × 500 | 11,150 / 2,154 | 6 | 0.5822 | `woods`, `split='OOD'` | [0.5868 ± 0.0038](../results/by_dataset/04_HHAR-OOD.csv) |
+| 5 | MP8 | 05 | 8 × 161 | 1,426 / 595 | 4 | 0.6857 | `numpy` (from FM4MTSC, see below) | [0.6756 ± 0.0063](../results/by_dataset/05_MP8.csv) |
+| 6 | MP50 | 05, 09 | 50 × 161 | 1,426 / 595 | 4 | 0.7345 | `numpy` (from FM4MTSC, see below) | [0.7092 ± 0.0049](../results/by_dataset/06_MP50.csv) |
+| 7 | UCI-HAR | 01, 02, 03, 04, 10 | 3 × 206 | 5,881 / 2,947 | 6 | 0.9013 | `tfc` (`'HAR'`) | [0.9013 ± 0.0015](../results/by_dataset/07_UCI-HAR.csv) |
+| 8 | Blink | 01, 02, 03, 04, 09 | 4 × 510 | 500 / 450 | 2 | 0.9956 | `uea` | [0.9956 ± 0.0018](../results/by_dataset/08_Blink.csv) |
+| 9 | CAP-ID | 01, 03, 04 | 19 × 3000 | 25,748 / 10,098 | 6 | 0.8152 | `woods`, `split='ID'` | [0.8091 ± 0.0010](../results/by_dataset/09_CAP-ID.csv) |
+| 10 | CAP-OOD | 01, 03, 04 | 19 × 3000 | 27,393 / 8,265 | 6 | 0.7859 | `woods`, `split='OOD'` | [0.7858 ± 0.0018](../results/by_dataset/10_CAP-OOD.csv) |
+| 11 | Epilepsy-EEG | 01, 02, 03, 04, 10 | 1 × 178 | 60 / 11,420 | 2 | 0.9558 | `tfc` (`'Epilepsy'`) | [0.9558 ± 0.0012](../results/by_dataset/11_Epilepsy-EEG.csv) |
+| 12 | FingerMovements | 01, 02, 03, 04, 09 | 28 × 50 | 316 / 100 | 2 | 0.5500 | `uea` | [0.5500 ± 0.0082](../results/by_dataset/12_FingerMovements.csv) |
+| 13 | PCL-ID | 06, 09 | 48 × 750 | 14,405 / 5,650 | 2 | 0.5716 | `woods`, `split='ID'` | [0.5769 ± 0.0031](../results/by_dataset/13_PCL-ID.csv) |
+| 14 | PCL-OOD | 09 | 48 × 750 | 9,880 / 7,800 | 2 | 0.5311 | `woods`, `split='OOD'` | [0.5343 ± 0.0024](../results/by_dataset/14_PCL-OOD.csv) |
+| 15 | SEDFx-ID | 07 | 4 × 3000 | 152,178 / 59,678 | 6 | 0.8000 | `woods`, `split='ID'` | [0.7985 ± 0.0004](../results/by_dataset/15_SEDFx-ID.csv) |
+| 16 | SEDFx-OOD | 08 | 4 × 3000 | 133,746 / 52,838 | 6 | 0.7636 | `woods`, `split='OOD'` | [0.7640 ± 0.0002](../results/by_dataset/16_SEDFx-OOD.csv) |
+| 17 | SelfRegulationSCP1 | 05 | 6 × 896 | 268 / 293 | 2 | 0.8134 | `uea` | [0.8134 ± 0.0016](../results/by_dataset/17_SelfRegulationSCP1.csv) |
+| 18 | SelfRegulationSCP2 | 05 | 7 × 1152 | 200 / 180 | 2 | 0.5167 | `uea` | [0.5148 ± 0.0228](../results/by_dataset/18_SelfRegulationSCP2.csv) |
 
 **Check after loading:** the kit's log prints `train N, test N, channels C, classes K` for each dataset. These should
 match the table above. If they do not, the data or the split differs from the paper, and the difference has to be
-recorded with the results.
+recorded with the results. The recorded ID split sizes are 8,717 / 3,418 for HHAR-ID and 14,406 / 5,650 for PCL-ID.
 
 ---
 
@@ -79,7 +80,11 @@ is: Google Drive ids `1Z3IcrCE-o77p4YrvkCy-Y-0CgCyxVHet` (HHAR), `118DNxHpzeJwVT
 
 ---
 
-## Datasets 1–6 (HAR)
+## Datasets 1–6 (HAR) — Aadil Shaji
+
+The frozen-encoder Random Forest results for datasets 2–6 come from [run 05](../kaggle_runs/05_part1_seven_datasets/).
+[Run 09](../kaggle_runs/09_part5_reruns/) contains the LoRA reruns for EMOPain and MP50. Ego4D has no
+reproduction result because it requires a signed licence agreement.
 
 ```python
 DATASETS = [
@@ -103,34 +108,41 @@ DATASETS = [
 - **HHAR-ID / HHAR-OOD:** one WOODS file gives both. The paper's OOD split is train on "nexus4", "s3" and "s3mini", test on "lgwatch". Check the exact names in the log.
 - **MP8 / MP50:** Military Press, in the versions by Sungu Isiacik et al. (2025). MP8 has 8 key body points and MP50 has all 50 coordinates. Same samples, so they share the split. Their repository (github.com/mlgig/FM4MTSC) links a public Google Drive folder (id `10Hvep0hk9naj_nRk4JMiXHMeV1vw0lcd`) with `MP8.npy` and `MP50.npy`. Each is a dict `{'train': {'X', 'y'}, 'test': {...}}` with exactly the paper's shapes; the runner script converts them to the kit's numpy format.
 
-## Datasets 13–18 (EEG)
+## Datasets 7–12 — Padmanabh Khunt
+
+The frozen-encoder Random Forest results for these six datasets come from [run 01](../kaggle_runs/01_reproduction_datasets_7-12/).
+
+These were run first, before the kit existed, with the scripts in `src/reproduce_mantisv2.py` and `src/development/`
+(see [`REPRODUCTION_NOTES.md`](REPRODUCTION_NOTES.md)). With the kit they load as: UCI-HAR `source='tfc'` (`'HAR'`),
+Blink and FingerMovements `source='uea'`, Epilepsy-EEG `source='tfc'` (`'Epilepsy'`), CAP-ID/OOD `source='woods'`
+with the CAP `.h5` file.
+
+## Datasets 13–18 (EEG) — Pranet Pednekar
+
+The frozen-encoder Random Forest result for PCL-ID was saved in [run 06](../kaggle_runs/06_part2_PCL_failed_out_of_RAM/)
+before the run exhausted RAM. The completed PCL-OOD results and the remaining PCL-ID methods are in [run 09](../kaggle_runs/09_part5_reruns/).
+SEDFx-ID and SEDFx-OOD were run separately in [run 07](../kaggle_runs/07_part3_SEDFx-ID/) and [run 08](../kaggle_runs/08_part4_SEDFx-OOD/).
+Both SCP datasets are in the shared [run 05](../kaggle_runs/05_part1_seven_datasets/).
 
 ```python
 DATASETS = [
-    dict(name='SelfRegulationSCP1', source='uea', paper=0.8134),
-    dict(name='SelfRegulationSCP2', source='uea', paper=0.5167),
     dict(name='PCL-ID',    source='woods', path='/tmp/data/<PCL file>.h5', split='ID', paper=0.5716),
     dict(name='PCL-OOD',   source='woods', path='/tmp/data/<PCL file>.h5', split='OOD',
          train_domains=['Cho2017'], test_domains=['Lee2019_MI'], paper=0.5311),
     dict(name='SEDFx-ID',  source='woods', path='/tmp/data/<SEDFx file>.h5', split='ID', paper=0.8000),
     dict(name='SEDFx-OOD', source='woods', path='/tmp/data/<SEDFx file>.h5', split='OOD',
          train_domains=['Age 20-40', 'Age 40-60'], test_domains=['Age 80-100'], paper=0.7636),
+    dict(name='SelfRegulationSCP1', source='uea', paper=0.8134),
+    dict(name='SelfRegulationSCP2', source='uea', paper=0.5167),
 ]
 ```
 
-- **SelfRegulationSCP1 / SCP2:** the kit downloads them from timeseriesclassification.com.
 - **PCL:** the paper's OOD split is train on "Cho2017", validation on "PhysionetMI" (not used), test on "Lee2019MI".
 - **SEDFx:** the paper's OOD split is train on ages 20–60, validation on 60–80 (not used), test on 80–100. If the file stores smaller age groups, list every group that falls in 20–60 in `train_domains`.
+- **SelfRegulationSCP1 / SCP2:** the kit downloads them from timeseriesclassification.com.
 - **SEDFx is the biggest dataset** (212,000 samples × 4 × 3000). Run SEDFx-ID and SEDFx-OOD in separate notebook versions. It is about 5 times CAP, which took 70 minutes on a T4, so expect several hours each. Split methods across versions as described for Ego4D if a run gets close to 12 hours.
 
 ---
-
-## Datasets 7–12
-
-These were run first, before the kit existed, with the scripts in `src/reproduce_mantisv2.py` and `src/development/`
-(see [`REPRODUCTION_NOTES.md`](REPRODUCTION_NOTES.md)). With the kit they load as: UCI-HAR `source='tfc'` (`'HAR'`),
-Blink and FingerMovements `source='uea'`, Epilepsy-EEG `source='tfc'` (`'Epilepsy'`), CAP-ID/OOD `source='woods'`
-with the CAP `.h5` file.
 
 ## Time
 
